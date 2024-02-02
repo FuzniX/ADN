@@ -81,4 +81,4 @@ def rechercher():
         return f"{type(e)}: {e}"
         
 
-app.run(host='0.0.0.0', port=81)
+app.run(host="0.0.0.0", port=81)
