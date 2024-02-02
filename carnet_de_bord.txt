@@ -1,0 +1,46 @@
+[16/01/2024]
+
+    - Création Repl
+    - Création fonctions.py
+    - Création assets.py
+    - Création carnet_de_bord.txt
+    - Création du dico Code Génétique
+    
+/ [16/01/2024]
+
+###
+
+[17/01/2024]
+
+    Prévu :
+        - Création des fonctions de base du traitement d'un code génétique entier :
+            - Rechercher un mot dans une chaine de texte transformé (str.find()) : FAIT
+            - Transformation du code génétique : FAIT
+        - Création de la base HTML:
+            - création index.html : FAIT
+            - importation de fichier : A CORRIGER
+
+    
+
+/ [17/01/2024]
+
+[23/01/2024]
+
+        - importation de fichier :  FAIT
+        - affichage du gène transformé et/ou des mots du dico dans le gène transformé : FAIT
+
+/ [23/01/2024]
+
+[30/01/2024]
+    - Affichage trié de la liste des mots
+    - Ajout de l'indice de chaque mot
+    - début de recherche de phrases et d'affichage en gras des mots trouvés
+
+/ [30/01/2024]
+
+[31/01/2024]
+    - correction des bugs sur la recherche de phrases et l'affichage en gras des mots trouvés
+    - phrase de réponse selon si oui ou non la phrase y est
+    - optimisation du code
+    - suppression des portions de code inutiles
+    - commentaire du code
