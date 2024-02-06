@@ -44,3 +44,12 @@
     - optimisation du code
     - suppression des portions de code inutiles
     - commentaire du code
+
+/[31/01/2024]
+
+[06/02/2024]
+    - début d'un CSS
+    - redirection en page d'accueil avec message d'erreur en cas d'absence de fichier importé
+    - correction faite : on peut maintenant rechercher des phrases avec plusieurs fois les mêmes mots
+    - fonction de vérification de validité d'un fichier
+    - fonction de transformation d'un fichier fna

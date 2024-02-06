@@ -1,3 +1,4 @@
+from flask.sansio.scaffold import T_route
 from assets import Assets as a
 
 def get_lettre(triplet: str) -> str:
@@ -40,3 +41,40 @@ def fic_to_txt(file_name: str) -> str:
 def get_set():
     with open("static/MOTS.txt", "r") as f:
         return {mot.strip() for mot in f.readlines()}
+
+def is_valid(file_name: str) -> bool:
+    """
+    Reçoit un nom de fichier et retourne la validité d'un fichier (s'il est au format txt et ne contient que des A, T, C, G ou N)
+    """
+
+    if file_name[-3:] == "fna":
+        fna_to_txt(file_name)
+        file_name = f"{file_name[:-3]}txt"
+        print("a")
+
+    print("b")
+    if file_name[-3:] == "txt":
+        print("c")
+        with open(file_name, "r") as fic:
+            for ligne in fic.readlines():
+                for char in ligne:
+                    if char not in ["A", "T", "C", "G", "N", "\n"]:
+                        print(char)
+                        print("d")
+                        return False
+            # if any((char not in ["A", "T", "C", "G", "N", "\n"] for char in ligne) for ligne in fic.readlines()):
+            #     print("d")
+            #     return False
+        print("e")
+        return True
+    
+
+
+def fna_to_txt(file_name: str) -> None:
+    with open(file_name, "r") as fic:
+        lignes = [ligne for ligne in fic.readlines() if all(char in ["A", "T", "C", "G", "N", "\n"] for char in ligne)]
+    file_name = f"{file_name[:-3]}txt"
+    
+    with open(file_name, "w") as f:
+        f.write("".join(lignes))
+            

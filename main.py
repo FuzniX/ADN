@@ -12,7 +12,7 @@ def index():
 # Accueil du site
 @app.route('/index.html')
 def affiche_index():
-  return render_template("index.html", disp = None)
+  return render_template("index.html", disp = "none")
 
 # Recevoir un fichier et retourner la liste des mots présents dans le génome donné
 @app.route('/upload', methods=['GET', 'POST'])
@@ -28,6 +28,11 @@ def upload():
     
     global nom_fichier
     nom_fichier = 'static/'+ secure_filename(file.filename)
+
+    if not f.is_valid(nom_fichier):
+        return render_template("index.html", disp = True)
+    
+    global gen
     gen = f.transposition(f.fic_to_txt(nom_fichier))
 
     global mots # Variable globale de la liste des mots dans le génome triée dans l'ordre alphabétique
@@ -52,33 +57,30 @@ def rechercher():
         
         liste_phrase = phrase.split(" ")
         i = 0
+        gen_tempo = gen
         
         for el in liste_phrase:
-            # Pas la phrase dans le génome
-            if el not in liste_mots:
-                return render_template("chercheur.html", 
-                                       nf=nom_fichier, 
-                                       les_mots = mots, 
-                                       status=f"{el} n'est pas dans le génome.", 
-                                       phrase="-1")
-
-            # Vérifier que c'est dans l'ordre
-            elif el in liste_mots and liste_mots.index(el) < i:
+            if el in gen_tempo:
+                gen_tempo = gen_tempo[gen_tempo.find(el)+len(el):]
+            elif el in liste_mots:
                 return render_template("chercheur.html",
-                                       nf=nom_fichier, 
-                                       les_mots = mots, 
-                                       status=f"Les mots qui constituent la phrase ne sont pas dans l'ordre dans le génome.", 
-                                       phrase="-1")
-
-            # Affecter un nouveau i
+                       nf=nom_fichier, 
+                       les_mots = mots, 
+                       status=f"Les mots qui constituent la phrase ne sont pas dans l'ordre dans le génome.", 
+                       phrase="-1")
             else:
-                i = liste_mots.index(el)
-        
+                return render_template("chercheur.html", 
+                       nf=nom_fichier, 
+                       les_mots = mots, 
+                       status=f"{el} n'est pas dans le génome.", 
+                       phrase="-1")
+                
         return render_template("chercheur.html", 
-                               nf = nom_fichier, 
-                               les_mots = mots,
-                               status = f"La phrase '{phrase}' est dans le génome",
-                               phrase=phrase.capitalize())
+               nf = nom_fichier, 
+               les_mots = mots,
+               status = f"La phrase '{phrase.capitalize()}' est dans le génome",
+               phrase=phrase.capitalize())
+        
 
     # Dans le cas où il y a une exception, l'afficher à l'utilisateur
     except Exception as e:
