@@ -59,7 +59,7 @@ def is_valid(file_name: str) -> bool:
     if file_name[-3:] == "txt":
         with open(file_name, "r") as fic:
             for char in "\n".join(fic.readlines()):
-                if char not in ["A", "T", "C", "G", "N"]:
+                if char not in ["A", "T", "C", "G", "N", "\n"]:
                     return False
         return True
 
