@@ -19,7 +19,7 @@
         <p>
             {% for mot in les_mots %}
                 {% if mot[0] in phrase %}
-                <b><li>{{mot}}</li></b>
+                <b><li>{{mot[0]}}</li></b>
                 {% else %}
                     <li>{{mot[0]}}</li>
                 {% endif %}
