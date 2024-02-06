@@ -14,6 +14,10 @@ def index():
 def affiche_index():
   return render_template("index.html", disp = "none")
 
+@app.route('/tuto.html')
+def affiche_tuto():
+    return render_template("tuto.html")
+
 # Recevoir un fichier et retourner la liste des mots présents dans le génome donné
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():

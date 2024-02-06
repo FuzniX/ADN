@@ -59,13 +59,7 @@ def is_valid(file_name: str) -> bool:
             for ligne in fic.readlines():
                 for char in ligne:
                     if char not in ["A", "T", "C", "G", "N", "\n"]:
-                        print(char)
-                        print("d")
                         return False
-            # if any((char not in ["A", "T", "C", "G", "N", "\n"] for char in ligne) for ligne in fic.readlines()):
-            #     print("d")
-            #     return False
-        print("e")
         return True
     
 
