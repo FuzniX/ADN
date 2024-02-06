@@ -12,10 +12,26 @@
         <h1>Découvreur de mot dans le génome</h1>
 
         <form class="fichup" method="POST" action="/upload" enctype="multipart/form-data">
-          <input type="file" name="file">
+          <input type="file" name="file" class="fichier">
           <button type="submit">Upload</button>
         </form>
-        
+        <div class="nofile" style="display:{{disp}}"><p>Veuillez importer un fichier</p></div>
     </main>
+
+  <script>
+      window.onload = function() {
+          var fileInput = document.querySelector('input[type="file"]');
+          var nofileDiv = document.getElementById('nofile');
+
+          fileInput.addEventListener('change', function() {
+              if (fileInput.files.length > 0) {
+                  nofileDiv.style.display = 'none'; // Cacher la div si un fichier a été importé
+              } else {
+                  nofileDiv.style.display = 'block'; // Afficher la div si aucun fichier n'a été importé
+              }
+          });
+      };
+  </script>
+      
   </body>
 </html>

@@ -1,8 +1,99 @@
-h1 {
+/* h1 {
     color: black;
     font-family: "Courier New", monospace;
     text-transform: uppercase;
     letter-spacing: 3px;
     word-spacing: 5px;
     text-align: center;
-  }
+  } */
+
+/* style.css */
+
+/* Reset des styles par défaut */
+html, body, main, h1, form, input, button, p, a, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+main {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: black;
+    font-family: "Courier New", monospace;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    word-spacing: 5px;
+    text-align: center;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+
+
+input[type="file"] {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+a {
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+b {
+    color: #ff0000;
+}

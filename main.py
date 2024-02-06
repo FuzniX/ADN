@@ -7,12 +7,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template("index.html", disp = "none")
 
 # Accueil du site
 @app.route('/index.html')
 def affiche_index():
-  return render_template("index.html")
+  return render_template("index.html", disp = None)
 
 # Recevoir un fichier et retourner la liste des mots présents dans le génome donné
 @app.route('/upload', methods=['GET', 'POST'])
@@ -20,6 +20,10 @@ def upload():
 
     # Récupérer le fichier
     file = request.files['file']
+
+    if not file:
+        return render_template("index.html", disp = True)
+    
     file.save('static/'+ secure_filename(file.filename))
     
     global nom_fichier
