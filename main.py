@@ -1,3 +1,5 @@
+import time
+
 from flask import Flask, render_template, request
 import fonctions as f
 from werkzeug.utils import secure_filename
@@ -41,7 +43,9 @@ def upload():
         return render_template("index.html", disp=True)
 
     gen = f.transposition(f.fic_to_txt(nom_fichier))
+    t1 = time.time()
     mots = sorted({(mot, gen.find(mot)) for mot in f.get_set() if mot in gen}, key=lambda x: x[1])  # POSE PROBLEME
+    print(time.time()-t1)
 
     return render_template("chercheur.html", les_mots=mots, status="", phrase="-1")
 
@@ -61,13 +65,14 @@ def rechercher():
 
     try:
 
+        mots_sans_indice = (mot[0] for mot in mots)
         liste_phrase = phrase.split(" ")
         gen_tempo = gen
 
         for el in liste_phrase:
             if el in gen_tempo:
                 gen_tempo = gen_tempo[gen_tempo.find(el) + len(el):]
-            elif el in (mot[0] for mot in mots):
+            elif el in mots_sans_indice:
                 return render_template("chercheur.html",
                                        les_mots=mots,
                                        status=f"Les mots qui constituent la phrase ne sont pas dans l'ordre dans le génome.",
