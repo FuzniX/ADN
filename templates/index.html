@@ -3,21 +3,27 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeSecret</title>
+    <title>ADN Explorer</title>
     <link rel="stylesheet" href="static/style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <script src="/static/script.js"></script>
   </head>
   <body>
     <main>
-        <h1>Découvreur de mot dans le génome</h1>
-        <p><a href="tuto.html"> Explications</a></p>
-        <form class="fichup" method="POST" action="/upload" enctype="multipart/form-data">
-          <input type="file" name="file" class="fichier">
-          <button type="submit">Upload</button>
-        </form>
-        <div class="nofile" style="display:{{disp}}"><p>Veuillez importer un fichier (valide)</p></div>
+        <div id="background" class="main1">
+            <h1>ADN Explorer</h1>
+            <p><a href="tuto.html"> Explications</a></p>
+            <form class="fichup" method="POST" action="/upload" enctype="multipart/form-data">
+              <input type="file" name="file" class="fichier">
+              <button onclick=demarrerTraitement() type="submit">Upload</button>
+            </form>
+            <div class="nofile" style="display:{{disp}}"><p>Veuillez importer un fichier (valide)</p></div>
+        </div>
+        <div id="chargement" style="display:none" class="loader JS_on">
+            <span class="binary"></span>
+            <span class="binary"></span>
+            <span class="getting-there">COMPLOTISATION EN COURS...</span>
+        </div>
     </main>
-
-      
   </body>
 </html>

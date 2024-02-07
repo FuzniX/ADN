@@ -57,20 +57,6 @@
 
 /[06/02/2024]
 
-AMELIORATIONS :
-
-def is_valid(file_name: str) -> bool:
-"""
-Reçoit un nom de fichier et retourne la validité d'un fichier (s'il est au format txt et ne contient que des A, T, C, G ou N)
-"""
-
-if file_name[-3:] == "fna":
-    fna_to_txt(file_name)
-    file_name = f"{file_name[:-3]}txt"
-
-if file_name[-3:] == "txt":
-    with open(file_name, "r") as fic:
-        for char in "\n".join(fic.readlines()):
-            if char not in ["A", "T", "C", "G", "N"]:
-                return False
-    return True
+[07/02/2024]
+    - création d'une instance de chargement durant le traitement de données
+    - améliorations du CSS
