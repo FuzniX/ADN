@@ -24,6 +24,7 @@ def in_string(mot: str, chaine: str) -> str:
     elif index >= 16:
         return ("..." + chaine[index - 15:index + 18] + "...").replace(mot, f" - {mot} - ")
     else:
+        print(index)
         return "...404 - NOT FOUND..."
 
 

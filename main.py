@@ -58,18 +58,42 @@ def rechercher():
                                status="Aucune phrase n'a été donnée.",
                                phrase="-1",)
 
-    try:
+    # try:
+    if True:
 
         mots_sans_indice = (mot[0] for mot in mots)
         liste_phrase = phrase.split(" ")
         gen_tempo = gen
         chaine = []
+        
 
-        for el in liste_phrase:
+        for i, el in enumerate(liste_phrase):
             if el in gen_tempo:
+                string = f.in_string(el, gen_tempo)
+
+                if string.find("-") != 19 and i != 0:
+                    repet = string.split()[0]
+                    apres_la_derniere = chaine[-1].split()[-1]
+
+                    if (indice := apres_la_derniere.find(repet)) != -1:
+                        apres_la_derniere = apres_la_derniere[:indice + len(repet)]
+                        chaine[-1] = chaine[-1].split()[-1][:-1] + apres_la_derniere[:-3] + string.split()[2:]
+                        print(chaine[-1].split()[-1][:-1])
+                        print(apres_la_derniere[:-3])
+                        print(string.split()[2:])
+                    else:
+                        print(chaine[-1][:-3])
+                        print(string)
+                        chaine[-1] = chaine[-1][:-21] + string
+
+                    
+                        
+                    # if chaine[-1][19] == "-":
+                    #     pre = chaine[-1][-15:]
+                else:
+                    chaine.append(string)
+                
                 gen_tempo = gen_tempo[gen_tempo.find(el) + len(el):]
-                print(gen_tempo)
-                chaine.append(f.in_string(el, gen_tempo))
                               
             elif el in mots_sans_indice:
                 return render_template("chercheur.html",
@@ -82,7 +106,6 @@ def rechercher():
                                        status=f"{el} n'est pas dans le génome.",
                                        phrase="-1")
 
-        #chaine = [f.in_string(mot, gen) for mot in liste_phrase]
         
         return render_template("chercheur.html",
                                les_mots=mots,
@@ -91,8 +114,9 @@ def rechercher():
                                chaine=chaine)
 
     # Dans le cas où il y a une exception, l'afficher à l'utilisateur
-    except Exception:
-        return index()
+    # except Exception as e:
+    #     print(e)
+    #     return index()
 
 
 app.run(host="0.0.0.0", port=26008)
