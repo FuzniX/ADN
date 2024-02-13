@@ -69,7 +69,7 @@ def rechercher():
             if el in gen_tempo:
                 gen_tempo = gen_tempo[gen_tempo.find(el) + len(el):]
                 print(gen_tempo)
-                chaine.append(f.in_string(el, gen_tempo)
+                chaine.append(f.in_string(el, gen_tempo))
                               
             elif el in mots_sans_indice:
                 return render_template("chercheur.html",
