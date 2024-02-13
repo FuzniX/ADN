@@ -63,11 +63,14 @@ def rechercher():
         mots_sans_indice = (mot[0] for mot in mots)
         liste_phrase = phrase.split(" ")
         gen_tempo = gen
+        chaine = []
 
         for el in liste_phrase:
             if el in gen_tempo:
                 gen_tempo = gen_tempo[gen_tempo.find(el) + len(el):]
                 print(gen_tempo)
+                chaine.append(f.in_string(el, gen_tempo)
+                              
             elif el in mots_sans_indice:
                 return render_template("chercheur.html",
                                        les_mots=mots,
@@ -79,7 +82,7 @@ def rechercher():
                                        status=f"{el} n'est pas dans le génome.",
                                        phrase="-1")
 
-        chaine = [f.in_string(mot, gen) for mot in liste_phrase]
+        #chaine = [f.in_string(mot, gen) for mot in liste_phrase]
         
         return render_template("chercheur.html",
                                les_mots=mots,
