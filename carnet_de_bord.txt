@@ -64,3 +64,4 @@
 [13/02/2024]
     - amélioration de l'instance de chargement
     - amélioration de l'affichage lors d'une phrase trouvée
+    - brainstorming pour la présentation du lendemain

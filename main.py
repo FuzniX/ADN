@@ -66,6 +66,7 @@ def rechercher():
 
         for el in liste_phrase:
             if el in gen_tempo:
+                print(gen_tempo)
                 gen_tempo = gen_tempo[gen_tempo.find(el) + len(el):]
             elif el in mots_sans_indice:
                 return render_template("chercheur.html",
