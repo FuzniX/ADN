@@ -17,7 +17,14 @@
             <input type="text" id="phrase" name="phrase">
         </form>
         <p>{{status}}</p>
-        <p>
+        <p>{% for line in chaine %}
+            <li>{{ line }}</li>
+           {% endfor %}</p>
+        </p>
+            
+        <br>
+            
+        <p>Mots trouvés dans le génome :
             {% for mot in les_mots %}
                 {% if mot[0] in phrase %}
                 <b><li>{{mot[0]}}</li></b>

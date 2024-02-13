@@ -61,7 +61,7 @@ def rechercher():
         return render_template("chercheur.html",
                                les_mots=mots,
                                status="Aucune phrase n'a été donnée.",
-                               phrase="-1")
+                               phrase="-1",)
 
     try:
 
@@ -76,17 +76,20 @@ def rechercher():
                 return render_template("chercheur.html",
                                        les_mots=mots,
                                        status=f"Les mots qui constituent la phrase ne sont pas dans l'ordre dans le génome.",
-                                       phrase="-1")
+                                       phrase="-1",)
             else:
                 return render_template("chercheur.html",
                                        les_mots=mots,
                                        status=f"{el} n'est pas dans le génome.",
                                        phrase="-1")
 
+        chaine = [f.in_string(mot, gen) for mot in liste_phrase]
+        
         return render_template("chercheur.html",
                                les_mots=mots,
                                status=f"La phrase '{phrase.capitalize()}' est dans le génome.",
-                               phrase=phrase)
+                               phrase=liste_phrase,
+                               chaine=chaine)
 
     # Dans le cas où il y a une exception, l'afficher à l'utilisateur
     except Exception:

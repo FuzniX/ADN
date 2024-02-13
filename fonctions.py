@@ -16,9 +16,13 @@ def in_string(mot: str, chaine: str) -> str:
 
     """
     index = chaine.find(mot)
-
-    if index >= 0:
-        return "..." + chaine[index - 15:index + 18] + "..."
+    
+    if 0 <= index < 16:
+        return (chaine[:index + 18] + "...").replace(mot, f" - {mot} - ")
+    elif len(chaine) - 19 < index:
+        return ("..." + chaine[index - 15:]).replace(mot, f" - {mot} - ")
+    elif index >= 16:
+        return ("..." + chaine[index - 15:index + 18] + "...").replace(mot, f" - {mot} - ")
     else:
         return "...404 - NOT FOUND..."
 
