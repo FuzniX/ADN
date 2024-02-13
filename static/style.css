@@ -226,3 +226,23 @@ b {
     opacity: 1;
   }
 }
+
+#back-to-top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 20px;
+    background-color: #009dff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 50%; /* Rend le bouton circulaire */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Ajoute une transition pour une animation fluide */
+}
+
+#back-to-top:hover {
+    background-color: #fff; /* Change la couleur au survol */
+    color: #009dff; /* Change la couleur du texte au survol */
+}

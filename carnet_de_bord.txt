@@ -60,3 +60,8 @@
 [07/02/2024]
     - création d'une instance de chargement durant le traitement de données
     - améliorations du CSS
+/[07/02/2024]
+
+[13/02/2024]
+    - amélioration de l'instance de chargement
+    - amélioration de l'affichage lors d'une phrase trouvée
