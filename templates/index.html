@@ -15,6 +15,7 @@
             <form class="fichup" method="POST" action="/upload" enctype="multipart/form-data">
               <input type="file" name="file" class="fichier">
               <button onclick=demarrerTraitement() type="submit">Upload</button>
+              <input type="checkbox" id="afficherMots" name="afficherMots" value="True" checked> <label for="afficherMots">Afficher les mots</label>
             </form>
             <div class="nofile" style="display:{{disp}}"><p>Veuillez importer un fichier (valide)</p></div>
         </div>
